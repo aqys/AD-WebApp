@@ -208,121 +208,70 @@ interface GigabitEthernet1/0/25
 !
 interface GigabitEthernet1/0/26
  no description
- switchport access vlan 30
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/27
  no description
- switchport access vlan 30
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/28
  no description
- switchport access vlan 30
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/29
  no description
- switchport access vlan 30
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/30
  no description
- switchport access vlan 30
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/31
  no description
- switchport access vlan 30
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/32
  no description
- switchport access vlan 30
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/33
  no description
- switchport access vlan 30
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/34
  no description
- switchport access vlan 30
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/35
  no description
- switchport access vlan 30
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/36
  no description
- switchport access vlan 30
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/37
  no description
- switchport access vlan 99
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/38
  no description
- switchport access vlan 99
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/39
  no description
- switchport access vlan 99
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/40
  no description
- switchport access vlan 99
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/41
  no description
- switchport access vlan 99
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/42
  no description
- switchport access vlan 99
- switchport mode access
- spanning-tree portfast edge
  shutdown
 !
 interface GigabitEthernet1/0/43
