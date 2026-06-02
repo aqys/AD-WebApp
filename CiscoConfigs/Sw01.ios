@@ -56,6 +56,10 @@ interface Port-channel2
  switchport trunk allowed vlan 10,20,30,99
  switchport mode trunk
 !
+interface Port-channel3
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+!
 interface FastEthernet0
  no ip address
  shutdown
@@ -313,18 +317,25 @@ interface GigabitEthernet1/0/42
  spanning-tree portfast edge
 !
 interface GigabitEthernet1/0/43
- switchport access vlan 10
+ description Trunk Link to RT02
+ switchport trunk allowed vlan 10,20,30,99
  switchport mode trunk
+ channel-group 3 mode on
 !
 interface GigabitEthernet1/0/44
+ description Trunk Link to RT02
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ channel-group 3 mode on
 !
 interface GigabitEthernet1/0/45
- description Trunk Link to Router
+ description Trunk Link to RT01
  switchport trunk allowed vlan 10,20,30,99
  switchport mode trunk
  channel-group 2 mode on
 !
 interface GigabitEthernet1/0/46
+ description Trunk Link to RT01
  switchport trunk allowed vlan 10,20,30,99
  switchport mode trunk
  channel-group 2 mode on
@@ -335,6 +346,7 @@ interface GigabitEthernet1/0/47
  channel-group 1 mode active
 !
 interface GigabitEthernet1/0/48
+ description Trunk to Sw02
  switchport mode trunk
  channel-group 1 mode active
 !

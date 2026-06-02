@@ -1,7 +1,7 @@
 version 15.4
 service timestamps debug datetime msec
 service timestamps log datetime msec
-no service password-encryption
+service password-encryption
 !
 hostname RT02
 !
@@ -9,6 +9,7 @@ boot-start-marker
 boot-end-marker
 !
 !
+enable secret 5 $1$P216$Q1tEMWc9C//awqhqhd42d1
 !
 no aaa new-model
 !
@@ -40,7 +41,7 @@ license udi pid CISCO2901/K9 sn FCZ2113B0JM
 license boot module c2900 technology-package securityk9
 !
 !
-username admin privilege 15 password 0 cisco1234
+username admin privilege 15 secret 5 $1$nhoy$886tEswzSmQnlsKrpvh8N0
 !
 redundancy
 !
@@ -58,17 +59,10 @@ ip ssh version 2
 !
 !
 !
-!
-interface Embedded-Service-Engine0/0
+interface Port-channel1
  no ip address
- shutdown
 !
-interface GigabitEthernet0/0
- no ip address
- duplex auto
- speed auto
-!
-interface GigabitEthernet0/0.10
+interface Port-channel1.10
  encapsulation dot1Q 10
  ip address 192.168.10.3 255.255.255.0
  ip helper-address 192.168.20.10
@@ -77,7 +71,7 @@ interface GigabitEthernet0/0.10
  standby 10 priority 99
  standby 10 preempt
 !
-interface GigabitEthernet0/0.20
+interface Port-channel1.20
  encapsulation dot1Q 20
  ip address 192.168.20.3 255.255.255.0
  standby version 2
@@ -85,7 +79,7 @@ interface GigabitEthernet0/0.20
  standby 20 priority 99
  standby 20 preempt
 !
-interface GigabitEthernet0/0.30
+interface Port-channel1.30
  encapsulation dot1Q 30
  ip address 192.168.30.3 255.255.255.0
  ip helper-address 192.168.20.10
@@ -94,7 +88,7 @@ interface GigabitEthernet0/0.30
  standby 30 priority 99
  standby 30 preempt
 !
-interface GigabitEthernet0/0.99
+interface Port-channel1.99
  encapsulation dot1Q 99
  ip address 192.168.99.3 255.255.255.0
  standby version 2
@@ -102,11 +96,23 @@ interface GigabitEthernet0/0.99
  standby 99 priority 99
  standby 99 preempt
 !
-interface GigabitEthernet0/1
+interface Embedded-Service-Engine0/0
  no ip address
  shutdown
+!
+interface GigabitEthernet0/0
+ description EtherChannel link 1 to Sw01
+ no ip address
  duplex auto
  speed auto
+ channel-group 1
+!
+interface GigabitEthernet0/1
+ description EtherChannel link 2 to Sw01
+ no ip address
+ duplex auto
+ speed auto
+ channel-group 1
 !
 interface Serial0/0/0
  no ip address
