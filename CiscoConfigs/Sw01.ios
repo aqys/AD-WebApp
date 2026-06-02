@@ -51,6 +51,21 @@ vlan internal allocation policy ascending
 !
 !
 !
+vlan 10
+ name Client
+!
+vlan 20
+ name Server
+!
+vlan 30
+ name WiFi
+!
+vlan 99
+ name Management
+!
+vlan 999
+ name Native
+!
 interface Port-channel1
  description EtherChannel Trunk to Sw02
  switchport trunk allowed vlan 10,20,30,99
@@ -461,12 +476,4 @@ line vty 5 15
  transport input ssh
 !
 !
-vlan 10
- name Client
-vlan 20
- name Server
-vlan 30
- name WiFi
-vlan 99
- name Management
 end
