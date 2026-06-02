@@ -137,8 +137,12 @@ ip route 0.0.0.0 0.0.0.0 192.168.20.80
 control-plane
 !
 !
+ vstack
+banner motd ^CNothing to see here^C
 !
 line con 0
+ password 7 060506324F41584B5643
+ login
 line aux 0
 line 2
  no activation-character
@@ -154,6 +158,5 @@ line vty 5 15
  transport input ssh
 !
 scheduler allocate 20000 1000
-ntp server pnpntpserver.munk.local
 !
 end
