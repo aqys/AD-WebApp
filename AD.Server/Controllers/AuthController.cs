@@ -14,12 +14,13 @@ public class AuthController : ControllerBase
         return Challenge(new AuthenticationProperties { RedirectUri = "/" }, OpenIdConnectDefaults.AuthenticationScheme);
     }
 
+    [HttpGet("logout")]
     [HttpPost("logout")]
     [Authorize]
     public IActionResult Logout()
     {
         return SignOut(new AuthenticationProperties { RedirectUri = "/" }, 
-            CookieAuthenticationDefaults.AuthenticationScheme, 
+            CookieAuthenticationDefaults.AuthenticationScheme,
             OpenIdConnectDefaults.AuthenticationScheme);
     }
 

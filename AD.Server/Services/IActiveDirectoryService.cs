@@ -10,4 +10,5 @@ public interface IActiveDirectoryService
     bool CreateOU(string ouName, string parentPath);
     bool AssignUserToOU(string username, string ouPath);
     bool RemoveUserFromOU(string username);
+    List<string> GetUserGroups(string samAccountName);
 }

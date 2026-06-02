@@ -13,4 +13,9 @@
     <PackageReference Include="System.DirectoryServices.AccountManagement" Version="10.0.8" />
   </ItemGroup>
 
+  <Target Name="BuildSass" BeforeTargets="Build">
+    <Exec Command="npm install" WorkingDirectory="$(ProjectDir)" />
+    <Exec Command="npx sass wwwroot/css/site.scss:wwwroot/css/site.css --no-source-map --style=expanded" WorkingDirectory="$(ProjectDir)" />
+  </Target>
+
 </Project>

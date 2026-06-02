@@ -187,4 +187,34 @@ public class ActiveDirectoryService : IActiveDirectoryService
         }
     }
 
+    public List<string> GetUserGroups(string samAccountName)
+    {
+        var groups = new List<string>();
+        try
+        {
+            using (var context = new PrincipalContext(ContextType.Domain, _config["ActiveDirectory:Domain"]))
+            {
+                var user = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, samAccountName);
+                if (user != null)
+                {
+                    var userGroups = user.GetGroups();
+                    foreach (var group in userGroups)
+                    {
+                        groups.Add(group.Name);
+                    }
+                }
+            }
+        }
+        catch (PlatformNotSupportedException)
+        {
+            // Re-throw so caller can handle platform-specific fallback
+            throw;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Fejl ved hentning af brugergrupper: {ex.Message}");
+        }
+        return groups;
+    }
+
 }

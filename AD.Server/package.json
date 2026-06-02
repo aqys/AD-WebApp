@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "devDependencies": {
+    "sass": "^1.75.0"
+  },
+  "scripts": {
+    "build:css": "sass wwwroot/css/site.scss:wwwroot/css/site.css --no-source-map --style=expanded"
+  }
+}

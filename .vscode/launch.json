@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch HQ",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build HQ",
+            "program": "${workspaceFolder}/AD.Server/bin/Debug/net10.0/AD.Server.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/AD.Server",
+            "console": "internalConsole",
+            // "envFile": "${workspaceFolder}/.env",
+            "stopAtEntry": false
+        }
+    ]
+}
