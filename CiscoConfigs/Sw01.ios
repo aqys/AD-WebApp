@@ -433,6 +433,12 @@ interface Vlan1
 interface Vlan10
  no ip address
 !
+interface Vlan20
+ no ip address
+!
+interface Vlan30
+ no ip address
+!
 interface Vlan99
  ip address 192.168.99.21 255.255.255.0
 !

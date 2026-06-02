@@ -57,16 +57,19 @@ interface Port-channel1
  switchport mode trunk
 !
 interface Port-channel11
- switchport access vlan 20
- switchport mode access
+ description EtherChannel Trunk to Srv01
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
 !
 interface Port-channel12
- switchport access vlan 20
- switchport mode access
+ description EtherChannel Trunk to Srv02
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
 !
 interface Port-channel13
- switchport access vlan 20
- switchport mode access
+ description EtherChannel Trunk to Srv03
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
 !
 interface FastEthernet0
  no ip address
@@ -110,128 +113,146 @@ interface GigabitEthernet1/0/6
 !
 interface GigabitEthernet1/0/7
  description Bond to Srv03
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 13 mode active
 !
 interface GigabitEthernet1/0/8
  description Bond to Srv03
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 13 mode active
 !
 interface GigabitEthernet1/0/9
  description Bond to Srv03
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 13 mode active
 !
 interface GigabitEthernet1/0/10
  description Bond to Srv03
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 13 mode active
 !
 interface GigabitEthernet1/0/11
  description Bond to Srv03
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 13 mode active
 !
 interface GigabitEthernet1/0/12
  description Bond to Srv03
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 13 mode active
 !
 interface GigabitEthernet1/0/13
  description Bond to Srv02
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 12 mode active
 !
 interface GigabitEthernet1/0/14
  description Bond to Srv02
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 12 mode active
 !
 interface GigabitEthernet1/0/15
  description Bond to Srv02
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 12 mode active
 !
 interface GigabitEthernet1/0/16
  description Bond to Srv02
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 12 mode active
 !
 interface GigabitEthernet1/0/17
  description Bond to Srv02
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 12 mode active
 !
 interface GigabitEthernet1/0/18
  description Bond to Srv02
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 12 mode active
 !
 interface GigabitEthernet1/0/19
  description Bond to Srv01
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 11 mode active
 !
 interface GigabitEthernet1/0/20
  description Bond to Srv01
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 11 mode active
 !
 interface GigabitEthernet1/0/21
  description Bond to Srv01
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 11 mode active
 !
 interface GigabitEthernet1/0/22
  description Bond to Srv01
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 11 mode active
 !
 interface GigabitEthernet1/0/23
  description Bond to Srv01
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 11 mode active
 !
 interface GigabitEthernet1/0/24
  description Bond to Srv01
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
  channel-group 11 mode active
 !
 interface GigabitEthernet1/0/25
@@ -351,6 +372,15 @@ interface GigabitEthernet1/0/52
 interface Vlan1
  no ip address
  shutdown
+!
+interface Vlan10
+ no ip address
+!
+interface Vlan20
+ no ip address
+!
+interface Vlan30
+ no ip address
 !
 interface Vlan99
  ip address 192.168.99.22 255.255.255.0
