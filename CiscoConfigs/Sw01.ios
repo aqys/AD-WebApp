@@ -69,294 +69,313 @@ interface GigabitEthernet1/0/1
  switchport access vlan 10
  switchport mode access
  spanning-tree portfast edge
+ no shutdown
 !
 interface GigabitEthernet1/0/2
- description VLAN 10: Client Network
+ no description
  switchport access vlan 10
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/3
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
  spanning-tree portfast edge
+ no shutdown
 !
 interface GigabitEthernet1/0/4
- description VLAN 10: Client Network
+ no description
  switchport access vlan 10
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/5
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
  spanning-tree portfast edge
+ no shutdown
 !
 interface GigabitEthernet1/0/6
- description VLAN 10: Client Network
+ no description
  switchport access vlan 10
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/7
- description VLAN 10: Client Network
+ no description
  switchport access vlan 10
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/8
- description VLAN 10: Client Network
+ no description
  switchport access vlan 10
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/9
- description VLAN 10: Client Network
+ no description
  switchport access vlan 10
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/10
- description VLAN 10: Client Network
+ no description
  switchport access vlan 10
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/11
- description VLAN 10: Client Network
+ no description
  switchport access vlan 10
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/12
- description VLAN 10: Client Network
+ no description
  switchport access vlan 10
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/13
  description VLAN 20: Server Network
  switchport access vlan 20
  switchport mode access
  spanning-tree portfast edge
+ no shutdown
 !
 interface GigabitEthernet1/0/14
- description VLAN 20: Server Network
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ no description
+ shutdown
 !
 interface GigabitEthernet1/0/15
- description VLAN 20: Server Network
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ no description
+ shutdown
 !
 interface GigabitEthernet1/0/16
- description VLAN 20: Server Network
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ no description
+ shutdown
 !
 interface GigabitEthernet1/0/17
- description VLAN 20: Server Network
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ no description
+ shutdown
 !
 interface GigabitEthernet1/0/18
- description VLAN 20: Server Network
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ no description
+ shutdown
 !
 interface GigabitEthernet1/0/19
- description VLAN 20: Server Network
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ no description
+ shutdown
 !
 interface GigabitEthernet1/0/20
- description VLAN 20: Server Network
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ no description
+ shutdown
 !
 interface GigabitEthernet1/0/21
- description VLAN 20: Server Network
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ no description
+ shutdown
 !
 interface GigabitEthernet1/0/22
- description VLAN 20: Server Network
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ no description
+ shutdown
 !
 interface GigabitEthernet1/0/23
- description VLAN 20: Server Network
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ no description
+ shutdown
 !
 interface GigabitEthernet1/0/24
- description VLAN 20: Server Network
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast edge
+ no description
+ shutdown
 !
 interface GigabitEthernet1/0/25
  description VLAN 30: WiFi
  switchport access vlan 30
  switchport mode access
  spanning-tree portfast edge
+ no shutdown
 !
 interface GigabitEthernet1/0/26
- description VLAN 30: WiFi
+ no description
  switchport access vlan 30
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/27
- description VLAN 30: WiFi
+ no description
  switchport access vlan 30
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/28
- description VLAN 30: WiFi
+ no description
  switchport access vlan 30
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/29
- description VLAN 30: WiFi
+ no description
  switchport access vlan 30
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/30
- description VLAN 30: WiFi
+ no description
  switchport access vlan 30
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/31
- description VLAN 30: WiFi
+ no description
  switchport access vlan 30
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/32
- description VLAN 30: WiFi
+ no description
  switchport access vlan 30
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/33
- description VLAN 30: WiFi
+ no description
  switchport access vlan 30
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/34
- description VLAN 30: WiFi
+ no description
  switchport access vlan 30
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/35
- description VLAN 30: WiFi
+ no description
  switchport access vlan 30
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/36
- description VLAN 30: WiFi
+ no description
  switchport access vlan 30
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/37
- description VLAN 99: Management
+ no description
  switchport access vlan 99
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/38
- description VLAN 99: Management
+ no description
  switchport access vlan 99
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/39
- description VLAN 99: Management
+ no description
  switchport access vlan 99
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/40
- description VLAN 99: Management
+ no description
  switchport access vlan 99
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/41
- description VLAN 99: Management
+ no description
  switchport access vlan 99
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/42
- description VLAN 99: Management
+ no description
  switchport access vlan 99
  switchport mode access
  spanning-tree portfast edge
+ shutdown
 !
 interface GigabitEthernet1/0/43
  description Trunk Link to RT02
  switchport trunk allowed vlan 10,20,30,99
  switchport mode trunk
  channel-group 3 mode on
+ no shutdown
 !
 interface GigabitEthernet1/0/44
  description Trunk Link to RT02
  switchport trunk allowed vlan 10,20,30,99
  switchport mode trunk
  channel-group 3 mode on
+ no shutdown
 !
 interface GigabitEthernet1/0/45
  description Trunk Link to RT01
  switchport trunk allowed vlan 10,20,30,99
  switchport mode trunk
  channel-group 2 mode on
+ no shutdown
 !
 interface GigabitEthernet1/0/46
  description Trunk Link to RT01
  switchport trunk allowed vlan 10,20,30,99
  switchport mode trunk
  channel-group 2 mode on
+ no shutdown
 !
 interface GigabitEthernet1/0/47
  description Trunk to Sw02
  switchport mode trunk
  channel-group 1 mode active
+ no shutdown
 !
 interface GigabitEthernet1/0/48
  description Trunk to Sw02
  switchport mode trunk
  channel-group 1 mode active
+ no shutdown
 !
 interface GigabitEthernet1/0/49
+ shutdown
 !
 interface GigabitEthernet1/0/50
+ shutdown
 !
 interface GigabitEthernet1/0/51
+ shutdown
 !
 interface GigabitEthernet1/0/52
+ shutdown
 !
 interface Vlan1
  no ip address
