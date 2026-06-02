@@ -6,7 +6,7 @@
 <style lang="scss">
 .management-wrapper {
     display: flex;
-    height: 100%;
+    flex: 1;
     width: 100%;
     padding: 1rem;
     padding-top: 0;

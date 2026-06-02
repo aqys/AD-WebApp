@@ -66,3 +66,14 @@ const createOU = async () => {
     }
 };
 </script>
+
+<style lang="scss" scoped>
+.modal-card-foot {
+    gap: 0.5rem;
+    height: 3rem;
+}
+.modal-card-body {
+    font-size: 1.05rem;
+    height: 14rem;
+}
+</style>

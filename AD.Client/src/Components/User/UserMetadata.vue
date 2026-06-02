@@ -161,4 +161,13 @@ const disableUser = async () => {
     align-items: center;
     gap: 1rem;
 }
+
+.modal-card-foot {
+    gap: 0.5rem;
+    height: 2rem;
+}
+.modal-card-body {
+    font-size: 1.05rem;
+    height: 1rem;
+}
 </style>

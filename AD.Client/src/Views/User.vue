@@ -27,8 +27,7 @@
         <Workspace :filled="selectedUser != null">
             <section class="hero is-link" v-if="selectedUser">
                 <div class="hero-body">
-                    <p class="title is-3">{{ selectedUser.firstName }} {{ selectedUser.lastName }}</p>
-                    <p class="subtitle is-6">{{ selectedUser.username }}</p>
+                    <p class="subtitle is-3">{{ selectedUser.username }}</p>
                 </div>
             </section>
             <WorkspaceContent v-if="selectedUser">
@@ -118,11 +117,12 @@ onUnmounted(() => {
 <style lang="scss">
 .custom-search-input {
     input {
-        background-color: #171a1f;
-        color: #e2e8f0;
+        background-color: #fff;
+        color: #000;
         border: none;
         border-radius: 6px;
         box-shadow: none;
+        border: 1px solid rgba(0, 0, 0, 0.1);
         
         &::placeholder {
             color: #475569;
@@ -131,12 +131,16 @@ onUnmounted(() => {
         
         &:focus {
             box-shadow: inset 0 0 0 1px #334155;
-            background-color: #1e2228;
+            background-color: #f1f5f9;
         }
     }
     
     .icon {
         color: #475569 !important;
+        svg {
+            width: 1rem;
+            height: 1rem;
+        }
     }
 }
 </style>

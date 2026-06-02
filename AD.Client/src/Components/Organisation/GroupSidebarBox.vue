@@ -28,7 +28,13 @@ defineProps<{
         margin-bottom: 0.25rem;
         display: flex;
         align-items: center;
-        gap: 0.4rem;
+        color: #666;
+        transition: color 0.15s;
+        gap: 0.25rem;
+    }
+
+    &-name:hover {
+        color: #333;
     }
 
     .ou-icon {

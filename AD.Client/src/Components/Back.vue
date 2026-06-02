@@ -1,6 +1,6 @@
 <template>
     <div class="back">
-        <a href="/">
+        <a :href="backUrl">
             <font-awesome-icon icon="arrow-left" />
         </a>
         <h1 class="title is-5">
@@ -13,6 +13,8 @@ const props = defineProps<{
     icon: string;
     title: string;
 }>();
+
+const backUrl = import.meta.env.DEV ? 'https://localhost:7123/' : '/';
 </script>
 <style lang="scss">
 .back {
@@ -22,5 +24,10 @@ const props = defineProps<{
     display: flex;
     gap: 0.25rem;
     padding: 1rem;
+    color: #363636;
+}
+
+.back h1.title {
+    color: #363636;
 }
 </style>

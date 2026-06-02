@@ -143,4 +143,13 @@ const removeOU = async () => {
 .flex {
     flex: 1;
 }
+
+.modal-card-foot {
+    gap: 0.5rem;
+    height: 3rem;
+}
+.modal-card-body {
+    font-size: 1.05rem;
+    height: 8rem;
+}
 </style>

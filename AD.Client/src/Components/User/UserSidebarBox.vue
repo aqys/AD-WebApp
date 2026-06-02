@@ -4,7 +4,6 @@
             <span> {{ user.username }} </span>
             <span v-if="!user.isEnabled" class="tag is-danger is-small ml-1">Deaktiveret</span>
         </div>
-        <div class="user-sidebar-box-username" v-if="hasName">{{ user.username }}</div>
         <div class="user-sidebar-box-ou" v-if="user.ouPath">
             <font-awesome-icon icon="sitemap" class="ou-icon" />
             {{ ouDisplayName }}
@@ -44,7 +43,13 @@ const ouDisplayName = computed(() => {
         margin-bottom: 0.15rem;
         display: flex;
         align-items: center;
-        gap: 0.3rem;
+        gap: 0.15rem;
+        color: #666;
+        transition: color 0.15s;
+    }
+
+    &-name:hover {
+        color: #333;
     }
 
     &-username {
@@ -58,6 +63,7 @@ const ouDisplayName = computed(() => {
         color: #94a3b8;
         display: flex;
         align-items: center;
+        gap: 0.25rem;
     }
 
     .ou-icon {

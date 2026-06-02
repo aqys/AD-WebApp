@@ -4,6 +4,7 @@
         <Sidebar>
             <SidebarHeader>
                 <BInput
+                    class="custom-search-input"
                     ref="searchInput"
                     v-model="searchQuery"
                     icon="magnifying-glass"
@@ -27,7 +28,7 @@
             <section class="hero is-link" v-if="selectedOU">
                 <div class="hero-body">
                     <p class="title is-3">{{ selectedOU.name }}</p>
-                    <p class="subtitle is-6">{{ selectedOU.distinguishedName }}</p>
+                    <p class="subtitle is-4">{{ selectedOU.distinguishedName }}</p>
                 </div>
             </section>
             <WorkspaceContent v-if="selectedOU">
@@ -97,3 +98,34 @@ onUnmounted(() => {
     window.removeEventListener('keydown', handleGlobalKeyDown);
 });
 </script>
+
+<style lang="scss">
+.custom-search-input {
+    input {
+        background-color: #fff;
+        color: #000;
+        border: none;
+        border-radius: 6px;
+        box-shadow: none;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        
+        &::placeholder {
+            color: #475569;
+            font-weight: 500;
+        }
+        
+        &:focus {
+            box-shadow: inset 0 0 0 1px #334155;
+            background-color: #f1f5f9;
+        }
+    }
+    
+    .icon {
+        color: #475569 !important;
+        svg {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+}
+</style>
