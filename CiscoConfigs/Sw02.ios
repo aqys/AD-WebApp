@@ -370,4 +370,12 @@ line vty 5 15
  transport input ssh
 !
 !
+vlan 10
+ name Client
+vlan 20
+ name Server
+vlan 30
+ name WiFi
+vlan 99
+ name Management
 end
