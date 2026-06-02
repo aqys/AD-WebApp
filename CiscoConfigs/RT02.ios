@@ -27,7 +27,7 @@ no aaa new-model
 !
 !
 no ip domain lookup
-ip domain name Rt02.munk.local
+ip domain name munk.local
 ip cef
 no ipv6 cef
 !

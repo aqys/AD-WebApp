@@ -10,6 +10,8 @@ boot-start-marker
 boot-end-marker
 !
 !
+enable secret 5 $1$P216$Q1tEMWc9C//awqhqhd42d1
+!
 username admin privilege 15 password 7 01100F175804575D7218
 no aaa new-model
 switch 1 provision ws-c2960x-48fps-l
@@ -31,6 +33,7 @@ ip domain-name munk.local
 !
 spanning-tree mode rapid-pvst
 spanning-tree extend system-id
+port-channel load-balance src-dst-ip
 !
 !
 !
@@ -50,6 +53,7 @@ vlan internal allocation policy ascending
 !
 interface Port-channel1
  description EtherChannel Trunk to Sw02
+ switchport trunk allowed vlan 10,20,30,99
  switchport mode trunk
 !
 interface Port-channel2
@@ -68,156 +72,180 @@ interface GigabitEthernet1/0/1
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
+ switchport nonegotiate
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
- switchport port-security mac-address
+ switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
  no shutdown
 !
 interface GigabitEthernet1/0/2
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
+ switchport nonegotiate
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
- switchport port-security mac-address
+ switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
  no shutdown
 !
 interface GigabitEthernet1/0/3
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
+ switchport nonegotiate
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
- switchport port-security mac-address
+ switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
  no shutdown
 !
 interface GigabitEthernet1/0/4
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
+ switchport nonegotiate
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
- switchport port-security mac-address
+ switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
  no shutdown
 !
 interface GigabitEthernet1/0/5
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
+ switchport nonegotiate
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
- switchport port-security mac-address
+ switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
  no shutdown
 !
 interface GigabitEthernet1/0/6
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
+ switchport nonegotiate
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
- switchport port-security mac-address
+ switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
  no shutdown
 !
 interface GigabitEthernet1/0/7
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
+ switchport nonegotiate
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
- switchport port-security mac-address
+ switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
  no shutdown
 !
 interface GigabitEthernet1/0/8
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
+ switchport nonegotiate
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
- switchport port-security mac-address
+ switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
  no shutdown
 !
 interface GigabitEthernet1/0/9
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
+ switchport nonegotiate
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
- switchport port-security mac-address
+ switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
  no shutdown
 !
 interface GigabitEthernet1/0/10
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
+ switchport nonegotiate
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
- switchport port-security mac-address
+ switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
  no shutdown
 !
 interface GigabitEthernet1/0/11
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
+ switchport nonegotiate
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
- switchport port-security mac-address
+ switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
  no shutdown
 !
 interface GigabitEthernet1/0/12
  description VLAN 10: Client Network
  switchport access vlan 10
  switchport mode access
+ switchport nonegotiate
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
- switchport port-security mac-address
+ switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
  no shutdown
 !
 interface GigabitEthernet1/0/13
@@ -409,17 +437,20 @@ interface Vlan99
  ip address 192.168.99.21 255.255.255.0
 !
 !
-ip http server
+no ip http server
 ip http secure-server
 ip ssh version 2
 !
 !
 !
 line con 0
+ exec-timeout 5 0
 line vty 0 4
+ exec-timeout 5 0
  login local
  transport input ssh
 line vty 5 15
+ exec-timeout 5 0
  login local
  transport input ssh
 !
