@@ -14,9 +14,9 @@ public class UserController : ControllerBase
         _adService = adService;
     }
 
-    // ─────────────────────────────────────────────
-    // GET /api/User — list all AD users
-    // ─────────────────────────────────────────────
+    
+    
+    
     [HttpGet]
     public IActionResult GetUsers()
     {
@@ -24,9 +24,9 @@ public class UserController : ControllerBase
         return Ok(users);
     }
 
-    // ─────────────────────────────────────────────
-    // POST /api/User/create — create a new user
-    // ─────────────────────────────────────────────
+    
+    
+    
     [HttpPost("create")]
     public IActionResult CreateUser([FromBody] UserCreateDto dto)
     {
@@ -35,9 +35,9 @@ public class UserController : ControllerBase
         return BadRequest(new { message = "Kunne ikke oprette bruger." });
     }
 
-    // ─────────────────────────────────────────────
-    // POST /api/User/disable/{username} — disable a user
-    // ─────────────────────────────────────────────
+    
+    
+    
     [HttpPost("disable/{username}")]
     public IActionResult DisableUser(string username)
     {
@@ -46,9 +46,20 @@ public class UserController : ControllerBase
         return NotFound(new { message = "Bruger ikke fundet." });
     }
 
-    // ─────────────────────────────────────────────
-    // POST /api/User/change-password — change password
-    // ─────────────────────────────────────────────
+    
+    
+    
+    [HttpPost("enable/{username}")]
+    public IActionResult EnableUser(string username)
+    {
+        var success = _adService.EnableUser(username);
+        if (success) return Ok(new { message = $"Bruger {username} er aktiveret." });
+        return NotFound(new { message = "Bruger ikke fundet." });
+    }
+
+    
+    
+    
     [HttpPost("change-password")]
     public IActionResult ChangePassword([FromBody] PasswordChangeDto dto)
     {
@@ -57,9 +68,9 @@ public class UserController : ControllerBase
         return BadRequest(new { message = "Kunne ikke ændre adgangskode." });
     }
 
-    // ─────────────────────────────────────────────
-    // POST /api/User/change-displayname — change first/last name
-    // ─────────────────────────────────────────────
+    
+    
+    
     [HttpPost("change-displayname")]
     public IActionResult ChangeDisplayName([FromBody] ChangeDisplayNameDto dto)
     {
@@ -68,9 +79,9 @@ public class UserController : ControllerBase
         return BadRequest(new { message = "Kunne ikke ændre navn." });
     }
 
-    // ─────────────────────────────────────────────
-    // GET /api/User/ous — list all OUs
-    // ─────────────────────────────────────────────
+    
+    
+    
     [HttpGet("ous")]
     public IActionResult GetOUs()
     {
@@ -78,9 +89,9 @@ public class UserController : ControllerBase
         return Ok(ous);
     }
 
-    // ─────────────────────────────────────────────
-    // POST /api/User/create-ou — create an OU
-    // ─────────────────────────────────────────────
+    
+    
+    
     [HttpPost("create-ou")]
     public IActionResult CreateOU([FromBody] OUCreateDto dto)
     {
@@ -89,9 +100,9 @@ public class UserController : ControllerBase
         return BadRequest(new { message = "Kunne ikke oprette OU." });
     }
 
-    // ─────────────────────────────────────────────
-    // POST /api/User/assign-ou — assign user to OU
-    // ─────────────────────────────────────────────
+    
+    
+    
     [HttpPost("assign-ou")]
     public IActionResult AssignUserToOU([FromBody] UserOUDto dto)
     {
@@ -100,9 +111,9 @@ public class UserController : ControllerBase
         return BadRequest(new { message = "Kunne ikke tildele bruger til OU." });
     }
 
-    // ─────────────────────────────────────────────
-    // POST /api/User/remove-ou/{username} — remove user from OU
-    // ─────────────────────────────────────────────
+    
+    
+    
     [HttpPost("remove-ou/{username}")]
     public IActionResult RemoveUserFromOU(string username)
     {

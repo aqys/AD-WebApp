@@ -23,7 +23,7 @@ public class ActiveDirectoryService : IActiveDirectoryService
         var connection = new LdapConnection();
         connection.SecureSocketLayer = false;
         
-        // Trust all certs (internal domain CA)
+        
         connection.UserDefinedServerCertValidationDelegate += (sender, cert, chain, errors) => true;
 
         connection.Connect(server, 389);
@@ -122,7 +122,7 @@ public class ActiveDirectoryService : IActiveDirectoryService
                 } 
                 catch (LdapReferralException) 
                 {
-                    continue; // Skip referrals
+                    continue; 
                 }
             }
         }
@@ -146,7 +146,7 @@ public class ActiveDirectoryService : IActiveDirectoryService
         } 
         catch (KeyNotFoundException) 
         {
-            // Ignore
+            
         }
         return "";
     }
@@ -168,16 +168,20 @@ public class ActiveDirectoryService : IActiveDirectoryService
                 new LdapAttribute("displayName", $"{dto.FirstName} {dto.LastName}"),
                 new LdapAttribute("userPrincipalName", $"{dto.Username}@{_config["ActiveDirectory:Domain"]}"),
                 new LdapAttribute("mail", $"{dto.Username}@{_config["ActiveDirectory:Domain"]}"),
-                new LdapAttribute("userAccountControl", "512")
+                new LdapAttribute("userAccountControl", "514") 
             };
 
             var entry = new LdapEntry(dn, attributes);
             connection.Add(entry);
 
-            // Set password
+            
             var passwordBytes = System.Text.Encoding.Unicode.GetBytes($"\"{dto.Password}\"");
-            var mod = new LdapModification(LdapModification.Replace, new LdapAttribute("unicodePwd", passwordBytes));
-            connection.Modify(dn, new[] { mod });
+            var modPassword = new LdapModification(LdapModification.Replace, new LdapAttribute("unicodePwd", passwordBytes));
+            connection.Modify(dn, new[] { modPassword });
+
+            
+            var modEnable = new LdapModification(LdapModification.Replace, new LdapAttribute("userAccountControl", "512"));
+            connection.Modify(dn, new[] { modEnable });
 
             return true;
         }
@@ -198,7 +202,7 @@ public class ActiveDirectoryService : IActiveDirectoryService
 
             var uacStr = GetAttribute(user, "userAccountControl");
             var uac = int.TryParse(uacStr, out var u) ? u : 512;
-            uac |= 2; // set ACCOUNTDISABLE bit
+            uac |= 2; 
 
             var mod = new LdapModification(LdapModification.Replace, new LdapAttribute("userAccountControl", uac.ToString()));
             connection.Modify(user.Dn, new[] { mod });
@@ -207,6 +211,29 @@ public class ActiveDirectoryService : IActiveDirectoryService
         catch (Exception ex)
         {
             Console.WriteLine($"[AD] DisableUser error: {ex}");
+            return false;
+        }
+    }
+
+    public bool EnableUser(string samAccountName)
+    {
+        try
+        {
+            using var connection = GetConnection();
+            var user = FindUserEntry(connection, samAccountName);
+            if (user == null) return false;
+
+            var uacStr = GetAttribute(user, "userAccountControl");
+            var uac = int.TryParse(uacStr, out var u) ? u : 512;
+            uac &= ~2; 
+
+            var mod = new LdapModification(LdapModification.Replace, new LdapAttribute("userAccountControl", uac.ToString()));
+            connection.Modify(user.Dn, new[] { mod });
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[AD] EnableUser error: {ex}");
             return false;
         }
     }

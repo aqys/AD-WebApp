@@ -79,7 +79,7 @@ const toggleOUSelection = (clicked: ADOU) => {
     }
 };
 
-// Ctrl+K search focus
+
 const searchInput = ref<any>(null);
 const handleGlobalKeyDown = (e: KeyboardEvent) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {

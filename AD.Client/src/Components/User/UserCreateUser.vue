@@ -35,6 +35,7 @@
 import { useUserStore } from '@/Stores/UserStore';
 import { BModal, BField, BInput, BButton, useToast } from 'buefy';
 import { ref, watch } from 'vue';
+import { validatePassword } from '@/Utils/validation';
 
 const Toast = useToast();
 const userStore = useUserStore();
@@ -48,7 +49,7 @@ const openCreate = () => {
     open.value = true;
 };
 
-// Auto-generate username from first + last name
+
 watch(
     () => [form.value?.firstName, form.value?.lastName],
     ([first, last]) => {
@@ -65,6 +66,17 @@ const createUser = async () => {
 
     if (!username || !firstName || !lastName || !password) {
         Toast.open({ message: 'Udfyld alle felter', type: 'is-warning' });
+        return;
+    }
+
+    const validationError = validatePassword(password, username, firstName, lastName);
+    if (validationError) {
+        Toast.open({ 
+            message: validationError, 
+            type: 'is-danger',
+            duration: 6000,
+            queue: false 
+        });
         return;
     }
 

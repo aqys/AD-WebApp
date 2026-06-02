@@ -4,6 +4,11 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Mvc;
 
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+
 [ApiController]
 [Route("api/[controller]")]
 public class AuthController : ControllerBase

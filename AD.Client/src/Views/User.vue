@@ -85,7 +85,7 @@ const toggleUserSelection = (clicked: ADUser) => {
     }
 };
 
-// After an update, refresh and re-sync the selected user object
+
 const onUserUpdated = async () => {
     await userStore.GET_USERS();
     if (selectedUser.value) {
@@ -94,7 +94,7 @@ const onUserUpdated = async () => {
     }
 };
 
-// Ctrl+K focuses the search box
+
 const searchInput = ref<any>(null);
 const handleGlobalKeyDown = (e: KeyboardEvent) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {

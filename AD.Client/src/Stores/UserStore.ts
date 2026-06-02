@@ -2,9 +2,9 @@ import UserService from "@/Services/UserService";
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
-/** Parse a friendly OU name from a full Distinguished Name string */
+
 function ouNameFromDN(dn: string): string {
-    // DN format: "OU=Sales,DC=corp,DC=local" → "Sales"
+    
     const match = dn.match(/^OU=([^,]+)/i);
     return match ? match[1] : dn;
 }
@@ -18,7 +18,7 @@ export const useUserStore = defineStore("user", () => {
     const USERS = computed(() => Users.value);
     const OUS = computed(() => OUs.value);
 
-    // ─── Users ───────────────────────────────────
+    
 
     async function GET_USERS() {
         const data = await userService.getUsers();
@@ -38,6 +38,12 @@ export const useUserStore = defineStore("user", () => {
         return success;
     }
 
+    async function ENABLE_USER(username: string) {
+        const success = await userService.enableUser(username);
+        if (success) await GET_USERS();
+        return success;
+    }
+
     async function CHANGE_PASSWORD(username: string, newPassword: string) {
         return await userService.changePassword(username, newPassword);
     }
@@ -48,7 +54,7 @@ export const useUserStore = defineStore("user", () => {
         return success;
     }
 
-    // ─── OUs ─────────────────────────────────────
+    
 
     async function GET_OUS() {
         const data = await userService.getOUs();
@@ -77,7 +83,7 @@ export const useUserStore = defineStore("user", () => {
     return {
         Users, OUs,
         USERS, OUS,
-        GET_USERS, CREATE_USER, DISABLE_USER, CHANGE_PASSWORD, CHANGE_DISPLAY_NAME,
+        GET_USERS, CREATE_USER, DISABLE_USER, ENABLE_USER, CHANGE_PASSWORD, CHANGE_DISPLAY_NAME,
         GET_OUS, CREATE_OU, ASSIGN_USER_TO_OU, REMOVE_USER_FROM_OU,
     };
 });

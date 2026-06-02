@@ -25,7 +25,7 @@ builder.Services.AddAuthentication(options =>
     options.Scope.Add("allatclaims");
     options.GetClaimsFromUserInfoEndpoint = false;
 
-    // Explicitly map the 'role' and 'roles' JSON arrays from ADFS to the Role claim type
+    
     options.ClaimActions.MapJsonKey("http://schemas.microsoft.com/ws/2008/06/identity/claims/role", "role");
     options.ClaimActions.MapJsonKey("http://schemas.microsoft.com/ws/2008/06/identity/claims/role", "roles");
     
@@ -82,7 +82,7 @@ builder.Services.AddScoped<IActiveDirectoryService, ActiveDirectoryService>();
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options =>
     {
-        // Ensure API responses use camelCase to match TypeScript interfaces
+        
         options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
     });
 

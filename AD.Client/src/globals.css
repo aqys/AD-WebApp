@@ -1,10 +1,10 @@
-/* Global fix for FontAwesome SVG icons inside Buefy .icon wrappers */
+
 .icon svg {
     width: 1em;
     height: 1em;
 }
 
-/* Make password-reveal (and other clickable right icons) smaller and dark grey */
+
 .control.has-icons-right .icon.is-right.is-clickable {
     color: #4a4a4a !important;
 }
@@ -21,7 +21,7 @@
     }
 }
 
-/* App layout constraint for scrolling */
+
 html, body, #app {
     height: 100vh;
     margin: 0;

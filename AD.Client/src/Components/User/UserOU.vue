@@ -8,7 +8,7 @@
             </BButton>
         </div>
 
-        <!-- Current OU -->
+        
         <div class="panel-block ou-current" v-if="selectedUser.ouPath">
             <span class="panel-icon">
                 <font-awesome-icon icon="sitemap" />
@@ -24,7 +24,7 @@
         </div>
     </nav>
 
-    <!-- Assign OU modal -->
+    
     <BModal v-model="assignOpen" has-modal-card>
         <div class="modal-card">
             <header class="modal-card-head">
@@ -47,7 +47,7 @@
         </div>
     </BModal>
 
-    <!-- Confirm remove modal -->
+    
     <BModal v-model="confirmRemoveOpen" has-modal-card>
         <div class="modal-card">
             <header class="modal-card-head">

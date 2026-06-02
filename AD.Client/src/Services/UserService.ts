@@ -1,8 +1,8 @@
 import type { AxiosResponse, AxiosError } from "axios";
 import axios from "axios";
 
-// Always send the session cookie (required for the [Authorize] policy to work
-// when the Vue dev server is proxying requests to the ASP.NET backend)
+
+
 axios.defaults.withCredentials = true;
 
 function logError(context: string, err: unknown) {
@@ -16,7 +16,7 @@ function logError(context: string, err: unknown) {
 
 export default class UserService {
 
-    // ─── Users ───────────────────────────────────
+    
 
     public async getUsers(): Promise<ADUser[]> {
         try {
@@ -59,6 +59,19 @@ export default class UserService {
         }
     }
 
+    public async enableUser(username: string): Promise<boolean> {
+        try {
+            const response: AxiosResponse = await axios({
+                url: `/api/User/enable/${encodeURIComponent(username)}`,
+                method: "POST"
+            });
+            return response.status === 200;
+        } catch (err) {
+            logError("enableUser", err);
+            return false;
+        }
+    }
+
     public async changePassword(username: string, newPassword: string): Promise<boolean> {
         try {
             const response: AxiosResponse = await axios({
@@ -89,7 +102,7 @@ export default class UserService {
         }
     }
 
-    // ─── OUs ─────────────────────────────────────
+    
 
     public async getOUs(): Promise<string[]> {
         try {

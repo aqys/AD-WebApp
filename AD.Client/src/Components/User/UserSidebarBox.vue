@@ -18,9 +18,7 @@ const props = defineProps<{
     selected: boolean;
 }>();
 
-const hasName = computed(() => {
-    return !!(props.user.firstName || props.user.lastName);
-});
+
 
 const ouDisplayName = computed(() => {
     if (!props.user.ouPath) return '';
