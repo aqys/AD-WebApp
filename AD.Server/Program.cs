@@ -79,7 +79,12 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<IActiveDirectoryService, ActiveDirectoryService>();
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+    {
+        // Ensure API responses use camelCase to match TypeScript interfaces
+        options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+    });
 
 builder.Services.AddAuthorization(options =>
 {

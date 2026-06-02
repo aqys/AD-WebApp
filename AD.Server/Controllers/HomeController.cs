@@ -50,10 +50,13 @@ namespace AD.Server.Controllers
 
             if (isAdmin)
             {
+                var env = HttpContext.RequestServices.GetService<IWebHostEnvironment>();
+                var spaBaseUrl = env?.IsDevelopment() == true ? "http://localhost:5173" : "";
+
                 retval.Shortcuts.AddRange(new List<HQPanelEntry>
                 {
-                    new() { Icon = "fa-solid fa-user", Title = "Brugerstyring", URL = "./User" },
-                    new() { Icon = "fa-solid fa-users", Title = "Gruppestyring", URL = "./Group" },
+                    new() { Icon = "fa-solid fa-user-pen", Title = "Brugerstyring", URL = $"{spaBaseUrl}/user" },
+                    new() { Icon = "fa-solid fa-sitemap", Title = "Organisation & Grupper", URL = $"{spaBaseUrl}/organisation" },
                 });
             }
             else

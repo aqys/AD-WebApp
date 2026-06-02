@@ -14,6 +14,19 @@ public class UserController : ControllerBase
         _adService = adService;
     }
 
+    // ─────────────────────────────────────────────
+    // GET /api/User — list all AD users
+    // ─────────────────────────────────────────────
+    [HttpGet]
+    public IActionResult GetUsers()
+    {
+        var users = _adService.GetAllUsers();
+        return Ok(users);
+    }
+
+    // ─────────────────────────────────────────────
+    // POST /api/User/create — create a new user
+    // ─────────────────────────────────────────────
     [HttpPost("create")]
     public IActionResult CreateUser([FromBody] UserCreateDto dto)
     {
@@ -22,6 +35,9 @@ public class UserController : ControllerBase
         return BadRequest(new { message = "Kunne ikke oprette bruger." });
     }
 
+    // ─────────────────────────────────────────────
+    // POST /api/User/disable/{username} — disable a user
+    // ─────────────────────────────────────────────
     [HttpPost("disable/{username}")]
     public IActionResult DisableUser(string username)
     {
@@ -30,6 +46,9 @@ public class UserController : ControllerBase
         return NotFound(new { message = "Bruger ikke fundet." });
     }
 
+    // ─────────────────────────────────────────────
+    // POST /api/User/change-password — change password
+    // ─────────────────────────────────────────────
     [HttpPost("change-password")]
     public IActionResult ChangePassword([FromBody] PasswordChangeDto dto)
     {
@@ -38,22 +57,30 @@ public class UserController : ControllerBase
         return BadRequest(new { message = "Kunne ikke ændre adgangskode." });
     }
 
-    [HttpPost("change-username")]
-    public IActionResult ChangeUsername([FromBody] UsernameChangeDto dto)
+    // ─────────────────────────────────────────────
+    // POST /api/User/change-displayname — change first/last name
+    // ─────────────────────────────────────────────
+    [HttpPost("change-displayname")]
+    public IActionResult ChangeDisplayName([FromBody] ChangeDisplayNameDto dto)
     {
-        var success = _adService.ChangeUsername(dto.OldUsername, dto.NewUsername);
-        if (success) return Ok(new { message = "Brugernavn ændret succesfuldt!" });
-        return BadRequest(new { message = "Kunne ikke ændre brugernavn." });
+        var success = _adService.ChangeDisplayName(dto.Username, dto.FirstName, dto.LastName);
+        if (success) return Ok(new { message = "Navn ændret succesfuldt!" });
+        return BadRequest(new { message = "Kunne ikke ændre navn." });
     }
 
-    [HttpPost("create-group")]
-    public IActionResult CreateGroup([FromBody] GroupCreateDto dto)
+    // ─────────────────────────────────────────────
+    // GET /api/User/ous — list all OUs
+    // ─────────────────────────────────────────────
+    [HttpGet("ous")]
+    public IActionResult GetOUs()
     {
-        var success = _adService.CreateGroup(dto.GroupName, dto.Description);
-        if (success) return Ok(new { message = $"Gruppe {dto.GroupName} oprettet succesfuldt!" });
-        return BadRequest(new { message = "Kunne ikke oprette gruppe." });
+        var ous = _adService.GetAllOUs();
+        return Ok(ous);
     }
 
+    // ─────────────────────────────────────────────
+    // POST /api/User/create-ou — create an OU
+    // ─────────────────────────────────────────────
     [HttpPost("create-ou")]
     public IActionResult CreateOU([FromBody] OUCreateDto dto)
     {
@@ -62,6 +89,9 @@ public class UserController : ControllerBase
         return BadRequest(new { message = "Kunne ikke oprette OU." });
     }
 
+    // ─────────────────────────────────────────────
+    // POST /api/User/assign-ou — assign user to OU
+    // ─────────────────────────────────────────────
     [HttpPost("assign-ou")]
     public IActionResult AssignUserToOU([FromBody] UserOUDto dto)
     {
@@ -70,6 +100,9 @@ public class UserController : ControllerBase
         return BadRequest(new { message = "Kunne ikke tildele bruger til OU." });
     }
 
+    // ─────────────────────────────────────────────
+    // POST /api/User/remove-ou/{username} — remove user from OU
+    // ─────────────────────────────────────────────
     [HttpPost("remove-ou/{username}")]
     public IActionResult RemoveUserFromOU(string username)
     {

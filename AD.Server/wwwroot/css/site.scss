@@ -17,6 +17,7 @@ body {
 .link-box {
   height: 8rem;
   width: 100%;
+  box-sizing: border-box;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.05);
@@ -66,7 +67,7 @@ body {
     }
 
     .logout-label {
-      font-size: 22px;
+      font-size: 20px;
     }
   }
 
