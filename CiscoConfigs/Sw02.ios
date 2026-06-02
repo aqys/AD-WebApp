@@ -73,22 +73,28 @@ interface FastEthernet0
  shutdown
 !
 interface GigabitEthernet1/0/1
- description VLAN 10: Client Network
+ description Srv03 Management port
  switchport access vlan 99
  switchport mode access
+ switchport nonegotiate
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
 !
 interface GigabitEthernet1/0/2
- description VLAN 10: Client Network
+ description Srv02 Management port
  switchport access vlan 99
  switchport mode access
+ switchport nonegotiate
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
 !
 interface GigabitEthernet1/0/3
- description VLAN 10: Client Network
+ description Srv01 Management port
  switchport access vlan 99
  switchport mode access
+ switchport nonegotiate
  spanning-tree portfast edge
+ spanning-tree bpduguard enable
 !
 interface GigabitEthernet1/0/4
  no description
