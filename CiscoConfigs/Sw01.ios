@@ -94,214 +94,289 @@ interface FastEthernet0
 !
 interface GigabitEthernet1/0/1
  description VLAN 10: Client Network
+!--- Assign port to VLAN 10
  switchport access vlan 10
  switchport mode access
+!--- Disable DTP (Dynamic Trunking Protocol)
  switchport nonegotiate
- switchport port-security
+!--- Storm Control
  storm-control broadcast level 1.00
  storm-control multicast level 2.00
+!--- MAC address security
+ switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
  switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/2
  description VLAN 10: Client Network
+!--- Assign port to VLAN 10
  switchport access vlan 10
  switchport mode access
+!--- Disable DTP (Dynamic Trunking Protocol)
  switchport nonegotiate
- switchport port-security
+!--- Storm Control
  storm-control broadcast level 1.00
  storm-control multicast level 2.00
+!--- MAC address security
+ switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
  switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/3
  description VLAN 10: Client Network
+!--- Assign port to VLAN 10
  switchport access vlan 10
  switchport mode access
+!--- Disable DTP (Dynamic Trunking Protocol)
  switchport nonegotiate
- switchport port-security
+!--- Storm Control
  storm-control broadcast level 1.00
  storm-control multicast level 2.00
+!--- MAC address security
+ switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
  switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/4
  description VLAN 10: Client Network
+!--- Assign port to VLAN 10
  switchport access vlan 10
  switchport mode access
+!--- Disable DTP (Dynamic Trunking Protocol)
  switchport nonegotiate
- switchport port-security
+!--- Storm Control
  storm-control broadcast level 1.00
  storm-control multicast level 2.00
+!--- MAC address security
+ switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
  switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/5
  description VLAN 10: Client Network
+!--- Assign port to VLAN 10
  switchport access vlan 10
  switchport mode access
+!--- Disable DTP (Dynamic Trunking Protocol)
  switchport nonegotiate
- switchport port-security
+!--- Storm Control
  storm-control broadcast level 1.00
  storm-control multicast level 2.00
+!--- MAC address security
+ switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
  switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/6
  description VLAN 10: Client Network
+!--- Assign port to VLAN 10
  switchport access vlan 10
  switchport mode access
+!--- Disable DTP (Dynamic Trunking Protocol)
  switchport nonegotiate
- switchport port-security
+!--- Storm Control
  storm-control broadcast level 1.00
  storm-control multicast level 2.00
+!--- MAC address security
+ switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
  switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/7
  description VLAN 10: Client Network
+!--- Assign port to VLAN 10
  switchport access vlan 10
  switchport mode access
+!--- Disable DTP (Dynamic Trunking Protocol)
  switchport nonegotiate
- switchport port-security
+!--- Storm Control
  storm-control broadcast level 1.00
  storm-control multicast level 2.00
+!--- MAC address security
+ switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
  switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/8
  description VLAN 10: Client Network
+!--- Assign port to VLAN 10
  switchport access vlan 10
  switchport mode access
+!--- Disable DTP (Dynamic Trunking Protocol)
  switchport nonegotiate
- switchport port-security
+!--- Storm Control
  storm-control broadcast level 1.00
  storm-control multicast level 2.00
+!--- MAC address security
+ switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
  switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/9
  description VLAN 10: Client Network
+!--- Assign port to VLAN 10
  switchport access vlan 10
  switchport mode access
+!--- Disable DTP (Dynamic Trunking Protocol)
  switchport nonegotiate
- switchport port-security
+!--- Storm Control
  storm-control broadcast level 1.00
  storm-control multicast level 2.00
+!--- MAC address security
+ switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
  switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/10
  description VLAN 10: Client Network
+!--- Assign port to VLAN 10
  switchport access vlan 10
  switchport mode access
+!--- Disable DTP (Dynamic Trunking Protocol)
  switchport nonegotiate
- switchport port-security
+!--- Storm Control
  storm-control broadcast level 1.00
  storm-control multicast level 2.00
+!--- MAC address security
+ switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
  switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/11
  description VLAN 10: Client Network
+!--- Assign port to VLAN 10
  switchport access vlan 10
  switchport mode access
+!--- Disable DTP (Dynamic Trunking Protocol)
  switchport nonegotiate
- switchport port-security
+!--- Storm Control
  storm-control broadcast level 1.00
  storm-control multicast level 2.00
+!--- MAC address security
+ switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
  switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/12
  description VLAN 10: Client Network
+!--- Assign port to VLAN 10
  switchport access vlan 10
  switchport mode access
+!--- Disable DTP (Dynamic Trunking Protocol)
  switchport nonegotiate
- switchport port-security
+!--- Storm Control
  storm-control broadcast level 1.00
  storm-control multicast level 2.00
+!--- MAC address security
+ switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
  switchport port-security mac-address sticky
  switchport port-security aging time 10
  switchport port-security aging type inactivity
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/13
  description VLAN 20: Server Network
+!--- Assign port to VLAN 20
  switchport access vlan 20
  switchport mode access
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/14
@@ -350,10 +425,13 @@ interface GigabitEthernet1/0/24
 !
 interface GigabitEthernet1/0/25
  description VLAN 30: WiFi
+!--- Assign port to VLAN 30
  switchport access vlan 30
  switchport mode access
+!--- Spanning tree
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- Enable interface
  no shutdown
 !
 interface GigabitEthernet1/0/26
