@@ -96,6 +96,9 @@ interface Port-channel1.99
  standby 99 priority 110
  standby 99 preempt
 !
+interface Port-channel1.999
+ encapsulation dot1Q 999 native
+!
 interface Embedded-Service-Engine0/0
  no ip address
  shutdown

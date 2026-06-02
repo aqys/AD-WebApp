@@ -96,6 +96,9 @@ interface Port-channel1.99
  standby 99 priority 99
  standby 99 preempt
 !
+interface Port-channel1.999
+ encapsulation dot1Q 999 native
+!
 interface Embedded-Service-Engine0/0
  no ip address
  shutdown
@@ -153,7 +156,7 @@ line 2
 line vty 0 4
  login local
  transport input ssh
-line vty 5 15
+line vty 5 14
  login local
  transport input ssh
 !
