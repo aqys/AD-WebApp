@@ -1,0 +1,153 @@
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname RT01
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$P216$Q1tEMWc9C//awqhqhd42d1
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name munk.local
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+license udi pid CISCO2901/K9 sn FGL214980YZ
+license accept end user agreement
+license boot module c2900 technology-package securityk9
+!
+!
+username admin privilege 15 secret 5 $1$nhoy$886tEswzSmQnlsKrpvh8N0
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ no ip address
+!
+interface Port-channel1.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.2 255.255.255.0
+ ip helper-address 192.168.20.10
+ standby version 2
+ standby 10 ip 192.168.10.1
+ standby 10 priority 110
+ standby 10 preempt
+!
+interface Port-channel1.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.2 255.255.255.0
+ standby version 2
+ standby 20 ip 192.168.20.1
+ standby 20 priority 110
+ standby 20 preempt
+!
+interface Port-channel1.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.2 255.255.255.0
+ ip helper-address 192.168.20.10
+ standby version 2
+ standby 30 ip 192.168.30.1
+ standby 30 priority 110
+ standby 30 preempt
+!
+interface Port-channel1.99
+ encapsulation dot1Q 99
+ ip address 192.168.99.2 255.255.255.0
+ standby version 2
+ standby 99 ip 192.168.99.1
+ standby 99 priority 110
+ standby 99 preempt
+!
+interface Embedded-Service-Engine0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/0
+ description EtherChannel link 1 to Sw01
+ no ip address
+ duplex auto
+ speed auto
+ channel-group 1
+!
+interface GigabitEthernet0/1
+ description EtherChannel Link 2 to Sw01
+ no ip address
+ duplex auto
+ speed auto
+ channel-group 1
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip route 0.0.0.0 0.0.0.0 192.168.20.80
+ip ssh version 2
+!
+!
+!
+!
+control-plane
+!
+!
+ vstack
+banner motd ^CNothing to see here^C
+!
+line con 0
+ password 7 060506324F41584B5643
+ login
+line aux 0
+line 2
+ no activation-character
+ no exec
+ transport preferred none
+ transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 14
+ login local
+ transport input ssh
+!
+scheduler allocate 20000 1000
+!
+end
