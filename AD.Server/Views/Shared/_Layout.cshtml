@@ -43,11 +43,12 @@
         .grid {
             display: grid;
             gap: 1rem;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(6, 1fr);
             max-width: 52rem;
             margin: auto;
         }
         .link-box {
+            grid-column: span 2;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -61,7 +62,13 @@
             transition: all 0.2s ease;
             text-decoration: none;
             color: inherit;
-            min-height: 240px;
+            min-height: 170px;
+        }
+        .grid:has(> .link-box:nth-child(5):last-child) > .link-box:nth-child(4) {
+            grid-column: 2 / 4;
+        }
+        .grid:has(> .link-box:nth-child(5):last-child) > .link-box:nth-child(5) {
+            grid-column: 4 / 6;
         }
         .link-box:hover {
             transform: translateY(-4px);

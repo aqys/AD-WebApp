@@ -56,7 +56,10 @@ namespace AD.Server.Controllers
                 retval.Shortcuts.AddRange(new List<HQPanelEntry>
                 {
                     new() { Icon = "fa-solid fa-user-pen", Title = "Brugerstyring", URL = $"{spaBaseUrl}/user" },
-                    new() { Icon = "fa-solid fa-sitemap", Title = "Organisation & Grupper", URL = $"{spaBaseUrl}/organisation" },
+                    new() { Icon = "fa-solid fa-sitemap", Title = "OU Styring", URL = $"{spaBaseUrl}/organisation" },
+                    new() { Icon = "fa-solid fa-users-gear", Title = "Sikkerheds Grupper", URL = $"{spaBaseUrl}/security-groups" },
+                    new() { Icon = "fa-solid fa-network-wired", Title = "DHCP Overblik", URL = $"{spaBaseUrl}/dhcp" },
+                    new() { Icon = "fa-solid fa-clock-rotate-left", Title = "Audit Logs", URL = $"{spaBaseUrl}/logs" },
                 });
             }
             else
