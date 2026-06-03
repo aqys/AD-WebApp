@@ -1,4 +1,5 @@
 import UserService from "@/Services/UserService";
+import SecurityGroupService from "@/Services/SecurityGroupService";
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
@@ -11,12 +12,15 @@ function ouNameFromDN(dn: string): string {
 
 export const useUserStore = defineStore("user", () => {
     const userService = new UserService();
+    const securityGroupService = new SecurityGroupService();
 
     const Users = ref<ADUser[]>([]);
     const OUs = ref<ADOU[]>([]);
+    const SecurityGroups = ref<ADSecurityGroup[]>([]);
 
     const USERS = computed(() => Users.value);
     const OUS = computed(() => OUs.value);
+    const SECURITY_GROUPS = computed(() => SecurityGroups.value);
 
     
 
@@ -80,10 +84,42 @@ export const useUserStore = defineStore("user", () => {
         return success;
     }
 
+    async function GET_SECURITY_GROUPS() {
+        const data = await securityGroupService.getGroups();
+        SecurityGroups.value = data;
+        return data;
+    }
+
+    async function CREATE_SECURITY_GROUP(groupName: string, parentPath: string) {
+        const success = await securityGroupService.createGroup(groupName, parentPath);
+        if (success) await GET_SECURITY_GROUPS();
+        return success;
+    }
+
+    async function DELETE_SECURITY_GROUP(distinguishedName: string) {
+        const success = await securityGroupService.deleteGroup(distinguishedName);
+        if (success) await GET_SECURITY_GROUPS();
+        return success;
+    }
+
+    async function GET_GROUP_MEMBERS(groupDn: string) {
+        return await securityGroupService.getMembers(groupDn);
+    }
+
+    async function ADD_MEMBER_TO_GROUP(groupDn: string, userDn: string) {
+        return await securityGroupService.addMember(groupDn, userDn);
+    }
+
+    async function REMOVE_MEMBER_FROM_GROUP(groupDn: string, userDn: string) {
+        return await securityGroupService.removeMember(groupDn, userDn);
+    }
+
     return {
-        Users, OUs,
-        USERS, OUS,
+        Users, OUs, SecurityGroups,
+        USERS, OUS, SECURITY_GROUPS,
         GET_USERS, CREATE_USER, DISABLE_USER, ENABLE_USER, CHANGE_PASSWORD, CHANGE_DISPLAY_NAME,
         GET_OUS, CREATE_OU, ASSIGN_USER_TO_OU, REMOVE_USER_FROM_OU,
+        GET_SECURITY_GROUPS, CREATE_SECURITY_GROUP, DELETE_SECURITY_GROUP,
+        GET_GROUP_MEMBERS, ADD_MEMBER_TO_GROUP, REMOVE_MEMBER_FROM_GROUP,
     };
 });

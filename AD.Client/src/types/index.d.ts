@@ -17,3 +17,8 @@ interface ADOU {
     
     name: string;
 }
+
+interface ADSecurityGroup {
+    name: string;
+    distinguishedName: string;
+}
