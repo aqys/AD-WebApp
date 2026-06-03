@@ -376,4 +376,153 @@ public class ActiveDirectoryService : IActiveDirectoryService
             return false;
         }
     }
+
+    public List<SecurityGroupDto> GetAllSecurityGroups()
+    {
+        var result = new List<SecurityGroupDto>();
+        try
+        {
+            using var connection = GetConnection();
+            var domainDn = GetDomainDn();
+            var filter = "(&(objectClass=group)(groupType:1.2.840.113556.1.4.803:=2147483648))";
+
+            var cons = new LdapSearchConstraints();
+            cons.MaxResults = 1000;
+
+            var results = connection.Search(domainDn, LdapConnection.ScopeSub, filter,
+                new[] { "cn", "distinguishedName" }, false, cons);
+
+            while (results.HasMore())
+            {
+                try
+                {
+                    var entry = results.Next();
+                    var cn = GetAttribute(entry, "cn");
+                    if (string.IsNullOrEmpty(cn)) continue;
+                    result.Add(new SecurityGroupDto
+                    {
+                        Name = cn,
+                        DistinguishedName = entry.Dn
+                    });
+                }
+                catch (LdapReferralException) { continue; }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[AD] GetAllSecurityGroups error: {ex}");
+            throw;
+        }
+        return result;
+    }
+
+    public bool CreateSecurityGroup(string groupName, string parentPath)
+    {
+        try
+        {
+            using var connection = GetConnection();
+            var dn = $"CN={EscapeLdap(groupName)},{parentPath}";
+
+            var attributes = new LdapAttributeSet
+            {
+                new LdapAttribute("objectClass", "group"),
+                new LdapAttribute("cn", groupName),
+                new LdapAttribute("sAMAccountName", groupName),
+                new LdapAttribute("groupType", "-2147483646")
+            };
+
+            var entry = new LdapEntry(dn, attributes);
+            connection.Add(entry);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[AD] CreateSecurityGroup error: {ex}");
+            return false;
+        }
+    }
+
+    public bool DeleteSecurityGroup(string distinguishedName)
+    {
+        try
+        {
+            using var connection = GetConnection();
+            connection.Delete(distinguishedName);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[AD] DeleteSecurityGroup error: {ex}");
+            return false;
+        }
+    }
+
+    public List<string> GetGroupMembers(string distinguishedName)
+    {
+        var result = new List<string>();
+        try
+        {
+            using var connection = GetConnection();
+            var domainDn = GetDomainDn();
+            var filter = $"(&(objectClass=group)(distinguishedName={EscapeLdap(distinguishedName)}))";
+
+            var cons = new LdapSearchConstraints();
+            var results = connection.Search(domainDn, LdapConnection.ScopeSub, filter,
+                new[] { "member" }, false, cons);
+
+            if (results.HasMore())
+            {
+                var entry = results.Next();
+                try
+                {
+                    var memberAttr = entry.GetAttribute("member");
+                    if (memberAttr != null)
+                    {
+                        foreach (var val in memberAttr.StringValueArray)
+                            result.Add(val);
+                    }
+                }
+                catch (KeyNotFoundException) { }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[AD] GetGroupMembers error: {ex}");
+        }
+        return result;
+    }
+
+    public bool AddMemberToGroup(string groupDn, string userDn)
+    {
+        try
+        {
+            using var connection = GetConnection();
+            var mod = new LdapModification(LdapModification.Add,
+                new LdapAttribute("member", userDn));
+            connection.Modify(groupDn, new[] { mod });
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[AD] AddMemberToGroup error: {ex}");
+            return false;
+        }
+    }
+
+    public bool RemoveMemberFromGroup(string groupDn, string userDn)
+    {
+        try
+        {
+            using var connection = GetConnection();
+            var mod = new LdapModification(LdapModification.Delete,
+                new LdapAttribute("member", userDn));
+            connection.Modify(groupDn, new[] { mod });
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[AD] RemoveMemberFromGroup error: {ex}");
+            return false;
+        }
+    }
 }
