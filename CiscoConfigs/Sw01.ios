@@ -22,7 +22,6 @@ switch 1 provision ws-c2960x-48fps-l
 !
 !
 ip dhcp snooping vlan 10,20,30
-no ip dhcp snooping information option
 ip dhcp snooping
 no ip domain-lookup
 ip domain-name munk.local
@@ -431,6 +430,8 @@ interface GigabitEthernet1/0/25
 !--- Spanning Tree Loop Prevention (PortFast and BPDU Guard)
  spanning-tree portfast edge
  spanning-tree bpduguard enable
+!--- DHCP Trust
+ip dhcp snooping trust
 !--- Enable interface
  no shutdown
 !

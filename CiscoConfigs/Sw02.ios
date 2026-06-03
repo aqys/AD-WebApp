@@ -82,18 +82,21 @@ interface Port-channel11
  switchport trunk allowed vlan 10,20,30,99,999
  switchport trunk native vlan 999
  switchport mode trunk
+ ip dhcp snooping trust
 !
 interface Port-channel12
  description EtherChannel Trunk to Srv02
  switchport trunk allowed vlan 10,20,30,99,999
  switchport trunk native vlan 999
  switchport mode trunk
+ ip dhcp snooping trust
 !
 interface Port-channel13
  description EtherChannel Trunk to Srv03
  switchport trunk allowed vlan 10,20,30,99,999
  switchport trunk native vlan 999
  switchport mode trunk
+ ip dhcp snooping trust
 !
 interface FastEthernet0
  no ip address
