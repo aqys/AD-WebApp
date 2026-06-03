@@ -27,7 +27,7 @@
         <Workspace :filled="selectedUser != null">
             <section class="hero is-link" v-if="selectedUser">
                 <div class="hero-body">
-                    <p class="subtitle is-3">{{ selectedUser.username }}</p>
+                    <p class="title is-3">{{ selectedUser.username }}</p>
                 </div>
             </section>
             <WorkspaceContent v-if="selectedUser">
