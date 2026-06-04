@@ -12,6 +12,10 @@ const routes: RouteRecordRaw[] = [
     {
         path: "/security-groups",
         component: () => import("../Views/SecurityGroups.vue")
+    },
+    {
+        path: "/dhcp",
+        component: () => import("../Views/DHCP.vue")
     }
 ];
 
