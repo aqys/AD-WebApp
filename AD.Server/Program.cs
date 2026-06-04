@@ -79,6 +79,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<IActiveDirectoryService, ActiveDirectoryService>();
 builder.Services.AddScoped<IDhcpService, DhcpService>();
+builder.Services.AddSingleton<IAuditLogService, AuditLogService>();
 
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options =>

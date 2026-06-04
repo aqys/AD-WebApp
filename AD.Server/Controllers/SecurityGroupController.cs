@@ -8,10 +8,12 @@ using AD.Server.Models;
 public class SecurityGroupController : ControllerBase
 {
     private readonly IActiveDirectoryService _adService;
+    private readonly IAuditLogService _auditLogService;
 
-    public SecurityGroupController(IActiveDirectoryService adService)
+    public SecurityGroupController(IActiveDirectoryService adService, IAuditLogService auditLogService)
     {
         _adService = adService;
+        _auditLogService = auditLogService;
     }
 
     [HttpGet]
@@ -25,7 +27,11 @@ public class SecurityGroupController : ControllerBase
     public IActionResult CreateGroup([FromBody] SecurityGroupCreateDto dto)
     {
         var success = _adService.CreateSecurityGroup(dto.GroupName, dto.ParentPath);
-        if (success) return Ok(new { message = $"Gruppe '{dto.GroupName}' oprettet." });
+        if (success)
+        {
+            _auditLogService.LogAction(GetAdminUser(), "Sikkerhedsgruppe oprettet", dto.GroupName, $"Oprettede sikkerhedsgruppen: {dto.GroupName} under parent: {dto.ParentPath}", GetIpAddress());
+            return Ok(new { message = $"Gruppe '{dto.GroupName}' oprettet." });
+        }
         return BadRequest(new { message = "Kunne ikke oprette gruppen." });
     }
 
@@ -33,7 +39,11 @@ public class SecurityGroupController : ControllerBase
     public IActionResult DeleteGroup([FromBody] SecurityGroupDeleteDto dto)
     {
         var success = _adService.DeleteSecurityGroup(dto.DistinguishedName);
-        if (success) return Ok(new { message = "Gruppe slettet." });
+        if (success)
+        {
+            _auditLogService.LogAction(GetAdminUser(), "Sikkerhedsgruppe slettet", dto.DistinguishedName, $"Slettede sikkerhedsgruppen: {dto.DistinguishedName}", GetIpAddress());
+            return Ok(new { message = "Gruppe slettet." });
+        }
         return BadRequest(new { message = "Kunne ikke slette gruppen." });
     }
 
@@ -48,7 +58,11 @@ public class SecurityGroupController : ControllerBase
     public IActionResult AddMember([FromBody] SecurityGroupMemberDto dto)
     {
         var success = _adService.AddMemberToGroup(dto.GroupDn, dto.UserDn);
-        if (success) return Ok(new { message = "Bruger tilføjet til gruppen." });
+        if (success)
+        {
+            _auditLogService.LogAction(GetAdminUser(), "Medlem tilføjet gruppe", dto.GroupDn, $"Tilføjede bruger {dto.UserDn} til gruppen {dto.GroupDn}", GetIpAddress());
+            return Ok(new { message = "Bruger tilføjet til gruppen." });
+        }
         return BadRequest(new { message = "Kunne ikke tilføje bruger." });
     }
 
@@ -56,7 +70,21 @@ public class SecurityGroupController : ControllerBase
     public IActionResult RemoveMember([FromBody] SecurityGroupMemberDto dto)
     {
         var success = _adService.RemoveMemberFromGroup(dto.GroupDn, dto.UserDn);
-        if (success) return Ok(new { message = "Bruger fjernet fra gruppen." });
+        if (success)
+        {
+            _auditLogService.LogAction(GetAdminUser(), "Medlem fjernet fra gruppe", dto.GroupDn, $"Fjernede bruger {dto.UserDn} fra gruppen {dto.GroupDn}", GetIpAddress());
+            return Ok(new { message = "Bruger fjernet fra gruppen." });
+        }
         return BadRequest(new { message = "Kunne ikke fjerne bruger." });
+    }
+
+    private string GetIpAddress()
+    {
+        return HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown";
+    }
+
+    private string GetAdminUser()
+    {
+        return User.Identity?.Name ?? "Unknown Admin";
     }
 }
