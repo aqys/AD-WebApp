@@ -44,3 +44,12 @@ interface DhcpScope {
     server: string;
     activeLeases: number;
 }
+
+interface AuditLogEntry {
+    timestamp: string;
+    administrator: string;
+    action: string;
+    target: string;
+    details: string;
+    ipAddress: string;
+}

@@ -16,6 +16,10 @@ const routes: RouteRecordRaw[] = [
     {
         path: "/dhcp",
         component: () => import("../Views/DHCP.vue")
+    },
+    {
+        path: "/logs",
+        component: () => import("../Views/Logs.vue")
     }
 ];
 
