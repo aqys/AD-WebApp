@@ -1,0 +1,28 @@
+services:
+  ad-server:
+    build:
+      context: ./AD.Server
+      dockerfile: Dockerfile
+    container_name: ad-server
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:5264
+    ports:
+      - "5264:5264"
+    volumes:
+      - ad-server-data:/app/Data
+    restart: always
+
+  ad-client:
+    build:
+      context: ./AD.Client
+      dockerfile: Dockerfile
+    container_name: ad-client
+    ports:
+      - "80:80"
+    depends_on:
+      - ad-server
+    restart: always
+
+volumes:
+  ad-server-data:
