@@ -78,6 +78,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddScoped<IActiveDirectoryService, ActiveDirectoryService>();
+builder.Services.AddScoped<IDhcpService, DhcpService>();
 
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options =>
